@@ -2,14 +2,24 @@ const express = require('express')
 const app = express()
 
 app.use(express.json())
-
 app.use(express.static('public'))
-
 app.set('view engine', 'ejs')
 
 const morgan = require('morgan')
 
-app.use(morgan('tiny'))
+morgan.token('response', (req, res) => {
+  return JSON.stringify(res.locals.data);
+});
+
+// morgan wont work with tiny :response. So we made put those together, if we want those to same line
+const customTiny = ':method :url :status :res[content-length] - :response-time ms :response';
+
+app.use(morgan(customTiny))
+
+app.use((req, res, next) => {
+  res.data = req.body;
+  next();
+});
 
 let persons = [
     { 
@@ -60,7 +70,6 @@ app.get('/api/persons/:id', (req, res)=>{
 
 app.delete('/api/persons/:id', (req, res)=>{
   const id = Number(req.params.id)
-  console.log(id)
   persons = persons.filter(person => person.id !== id)
 
   res.status(204).end()
@@ -72,7 +81,6 @@ const generateId = () => {
     : 0
   return Math.floor(Math.random() * (400000 - maxId + 1)) + maxId
 }
-
 
 app.post('/api/persons', (req, res)=>{
     const body = req.body
@@ -96,6 +104,7 @@ app.post('/api/persons', (req, res)=>{
       id: generateId(),
     }
 
+    res.locals.data = person
     persons = persons.concat(person)
 
     res.json(person)
