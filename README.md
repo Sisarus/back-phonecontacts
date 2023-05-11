@@ -27,8 +27,8 @@ npm run dev
 
 ## Project Links
 
-Opens to [localhost](http://localhost:3001/api/persons)
-Little EJS test: [Info](http://localhost:3001/info)
+* Opens to [localhost](http://localhost:3001/api/persons)
+* Little EJS test: [Info](http://localhost:3001/info)
 
 ## Features
 List the ready features here:
