@@ -28,6 +28,7 @@ npm run dev
 ## Project Links
 
 Opens to [localhost](http://localhost:3001/api/persons)
+Little EJS test: [Info](http://localhost:3001/info)
 
 ## Features
 List the ready features here:
@@ -36,6 +37,3 @@ List the ready features here:
  * Add person
  * Get person
  * delete person
-
-
-Little EJS test: [Info](http://localhost:3001/info)
