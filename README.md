@@ -6,6 +6,7 @@
 * [Setup](#setup)
 * [Project Links](#project-links)
 * [Features](#features)
+* [Project Status](#project-status)
 
 ## General info
 Phonecontacs list backend with persons name and number. 
@@ -37,3 +38,8 @@ List the ready features here:
  * Add person
  * Get person
  * delete person
+
+## Project Status
+Project is: in progress /
+
+<!--complete / no longer being worked on. If you are no longer working on it, provide reasons why. -->
