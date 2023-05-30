@@ -15,7 +15,6 @@ Phonecontacs list backend with persons name and number.
 Project is created with:
  * Express
  * Morgan
- * EJS
 
 ## Setup
 To run this project, install it locally using npm:
