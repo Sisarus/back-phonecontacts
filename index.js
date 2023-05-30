@@ -53,7 +53,7 @@ app.get('/info', (req, res)=>{
   console.log(today)
 
   const contacts = persons.length
-  res.render('info', { contacts, today })
+  res.send(`<p>Phonebook has info for ${contacts} people</p><p>Hello World! ${today}</p>`);
 })
 
 app.get('/api/persons/:id', (req, res)=>{
