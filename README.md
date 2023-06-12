@@ -44,3 +44,4 @@ List the ready features here:
 Project is: in progress
 
 <!--complete / no longer being worked on. If you are no longer working on it, provide reasons why. -->
+<!-- npm run deploy:full -->
