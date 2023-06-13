@@ -49,7 +49,6 @@ let persons = [
 app.get('/api/persons', (req, res)=>{
   Person.find({}).then(persons => {
     res.json(persons)
-    console.log('Onko heitä ' + persons)
   })
 })
 
@@ -88,30 +87,21 @@ const generateId = () => {
 
 app.post('/api/persons', (req, res)=>{
     const body = req.body
+
     if(!body.name || !body.number) {
       return res.status(400).json({
         error: 'content missing. Name of number'
       })
     }
 
-    const checkPerson = persons.find(person => person.name === body.name)
-    
-    if(checkPerson){
-      return res.status(400).json({
-        error: 'person is already added. name must be unique'
-      })
-    }
+    const person = new Person({
+      name: body.name,
+      number: body.number
+    })
 
-    const person = {
-      name: body.name, 
-      number: body.number,
-      id: generateId(),
-    }
-
-    res.locals.data = person
-    persons = persons.concat(person)
-
-    res.json(person)
+    person.save().then(savedPerson => {
+      res.json(savedPerson)
+    })
 })
 
 const PORT = process.env.PORT
