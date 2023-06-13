@@ -1,16 +1,10 @@
 const express = require('express')
 const app = express()
-
-app.use(express.json())
-app.use(express.static('public'))
-
+const cors = require('cors')
+require('dotenv').config()
 const morgan = require('morgan')
 
-app.use(express.static('build'))
-
-const cors = require('cors')
-
-app.use(cors())
+const Person = require('./models/person')
 
 morgan.token('response', (req, res) => {
   return JSON.stringify(res.locals.data);
@@ -20,6 +14,9 @@ morgan.token('response', (req, res) => {
 const customTiny = ':method :url :status :res[content-length] - :response-time ms :response';
 
 app.use(morgan(customTiny))
+app.use(cors())
+app.use(express.json())
+app.use(express.static('build'))
 
 app.use((req, res, next) => {
   res.data = req.body;
@@ -49,9 +46,11 @@ let persons = [
     }
 ]
 
-
 app.get('/api/persons', (req, res)=>{
-  res.json(persons)
+  Person.find({}).then(persons => {
+    res.json(persons)
+    console.log('Onko heitä ' + persons)
+  })
 })
 
 app.get('/info', (req, res)=>{
@@ -115,7 +114,7 @@ app.post('/api/persons', (req, res)=>{
     res.json(person)
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT,()=>{
     console.log(`Server running port ${PORT}`)
 })

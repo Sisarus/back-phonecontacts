@@ -21,8 +21,8 @@ const Person = mongoose.model('Person', personShema)
 
 if(process.argv.length < 4) {
     console.log('phonebook:')
-    Person.find({}).then(persons =>{
-        persons.forEach(person => {
+    Person.find({}).then(people =>{
+        people.forEach(person => {
             console.log(`${person.name} ${person.number}`)
         })
         mongoose.connection.close()
