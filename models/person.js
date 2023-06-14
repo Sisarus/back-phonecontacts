@@ -19,11 +19,7 @@ const personShema = new mongoose.Schema({
         minlength: 3,
         required: true
     },
-    number:{
-        type: String,
-        minlength: 3,
-        required: true
-    }
+    number: String
 })
 
 personShema.set('toJSON', {
