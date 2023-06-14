@@ -1,6 +1,6 @@
 # Phonecontacts Backend
 
-[PAGE LINK](https://phonecontacts.onrender.com/api/persons)
+[PAGE LINK](https://phonecontacts.onrender.com/)
 
 ## Table of contents
 * [General info](#general-info)
