@@ -53,7 +53,7 @@ app.get('/info', (req, res) => {
   res.send(`<p>Phonebook has info for ${personCount} people</p><p>Hello World! ${today}</p>`)
 })
 
-app.get('/api/persons/:id', (req, res) => {
+app.get('/api/persons/:id', (req, res, next) => {
   Person.findById(req.params.id)
     .then(person => {
       if (person) {
