@@ -21,8 +21,6 @@ Project is created with:
 ## Setup
 To run this project, install it locally using npm:
 ```
-git clone https://github.com/Sisarus/express-phonecontacts.git
-cd .\express-phonecontacts
 npm install
 npm run dev
 ```
